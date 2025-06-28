@@ -60,6 +60,17 @@ const TableExpenseManagement = () => {
 			.catch((error) => console.error("Error en la petición:", error));
 	};
 
+	const handleUpdate = (updatedExpense) => {
+		setExpenses((prevExpenses) =>
+			prevExpenses.map((expense) =>
+				expense.idExpense === updatedExpense.idExpense
+					? updatedExpense
+					: expense
+			)
+		);
+		setOpenFormDialogUpdateExpense(false);
+	};
+
 	return (
 		<div className="TableExpenseManagement">
 			<FormDialogAddExpenseManagement
@@ -74,16 +85,7 @@ const TableExpenseManagement = () => {
 			<FormDialogUpdateExpenseManagement
 				open={openFormDialogUpdateExpense}
 				onClose={() => setOpenFormDialogUpdateExpense(false)}
-				onUpdate={(updatedExpense) => {
-					setExpenses((prevExpenses) =>
-						prevExpenses.map((expense) =>
-							expense.idExpense === updatedExpense.idExpense
-								? updatedExpense
-								: expense
-						)
-					);
-					setOpenFormDialogUpdateExpense(false);
-				}}
+				onUpdate={handleUpdate}
 				expense={selectedExpense}
 			/>
 			<TableContainer>
