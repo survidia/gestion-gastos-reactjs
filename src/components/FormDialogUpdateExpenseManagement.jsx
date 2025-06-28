@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
 import API_ROUTES from "../config";
 import { useEffect, useState } from "react";
 
-const FormDialogAddExpenseManagement = ({
+const FormDialogUpdateExpenseManagement = ({
 	open,
 	onClose,
 	onUpdate,
@@ -34,7 +34,7 @@ const FormDialogAddExpenseManagement = ({
 
 	useEffect(() => {
 		if (expense) {
-			setUpdatedExpense(expense);
+			setUpdatedExpense(Array.isArray(expense) ? expense[0] : expense);
 		}
 	}, [expense]);
 
@@ -55,14 +55,29 @@ const FormDialogAddExpenseManagement = ({
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		const { name, category, date, amount, description } = updatedExpense;
+
+		if (!name || !category || !date || !amount || !description) {
+			showAlert("Todos los campos son obligatorios", "error");
+			return;
+		}
+
+		if (isNaN(amount) || Number(amount) <= 0) {
+			showAlert("La cantidad debe ser un número positivo", "error");
+			return;
+		}
+
 		try {
-			const response = await fetch(API_ROUTES.UPDATE_EXPENSE, {
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json; charset=UTF-8",
-				},
-				body: JSON.stringify(updatedExpense),
-			});
+			const response = await fetch(
+				API_ROUTES.UPDATE_EXPENSE(updatedExpense.idExpense),
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					},
+					body: JSON.stringify(updatedExpense),
+				}
+			);
 
 			if (response.ok) {
 				const updatedData = await response.json();
@@ -83,7 +98,7 @@ const FormDialogAddExpenseManagement = ({
 	};
 
 	return (
-		<div className="FormDialogAddExpenseManagement">
+		<div className="FormDialogUpdateExpenseManagement">
 			<>
 				<Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
 					<DialogTitle>Actualizar gasto</DialogTitle>
@@ -104,7 +119,7 @@ const FormDialogAddExpenseManagement = ({
 									fullWidth
 									required
 								/>
-                                <TextField
+								<TextField
 									label="Categoría"
 									name="category"
 									type="text"
@@ -114,19 +129,9 @@ const FormDialogAddExpenseManagement = ({
 									required
 								/>
 								<TextField
-									label="Fecha"
 									name="date"
 									type="date"
 									value={updatedExpense.date}
-									onChange={handleChange}
-									fullWidth									
-									required
-								/>
-								<TextField
-									label="Descripción"
-									name="description"
-									type="text"
-									value={updatedExpense.description}
 									onChange={handleChange}
 									fullWidth
 									required
@@ -139,20 +144,21 @@ const FormDialogAddExpenseManagement = ({
 									onChange={handleChange}
 									fullWidth
 									required
-								/>								
+								/>
+								<TextField
+									label="Descripción"
+									name="description"
+									type="text"
+									value={updatedExpense.description}
+									onChange={handleChange}
+									fullWidth
+									required
+								/>
 							</Box>
-							<Button
-								type="submit"
-								variant="contained"
-								color="primary"
-								sx={{ mt: 2 }}
-							>
-								Crear gasto
-							</Button>
 						</form>
 					</DialogContent>
 					<DialogActions>
-						<Button onClick={handleSubmit}>Guardar</Button>
+						<Button onClick={handleSubmit}>Actualizar</Button>
 						<Button onClick={onClose} color="error">
 							Cancelar
 						</Button>
@@ -178,10 +184,11 @@ const FormDialogAddExpenseManagement = ({
 	);
 };
 
-FormDialogAddExpenseManagement.propTypes = {
+FormDialogUpdateExpenseManagement.propTypes = {
 	open: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired,
-	handleSubmit: PropTypes.func.isRequired,
+	onUpdate: PropTypes.func.isRequired,
+	expense: PropTypes.object,
 };
 
-export default FormDialogAddExpenseManagement;
+export default FormDialogUpdateExpenseManagement;

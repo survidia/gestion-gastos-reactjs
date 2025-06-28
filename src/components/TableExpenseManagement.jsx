@@ -124,7 +124,7 @@ const TableExpenseManagement = () => {
 					</TableHead>
 					<TableBody sx={{ backgroundColor: colors.tertiary }}>
 						{expenses.map((expense) => (
-							<TableRow>
+							<TableRow key={expense.idExpense}>
 								<TableCell sx={{ color: colors.text }}>
 									{expense.name}
 								</TableCell>

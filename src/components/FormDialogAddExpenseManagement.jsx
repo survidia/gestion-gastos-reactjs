@@ -116,21 +116,11 @@ const FormDialogAddExpenseManagement = ({ open, onClose, onCreate }) => {
 									required
 								/>
 								<TextField
-									label="Fecha"
 									name="date"
 									type="date"
 									value={expense.date}
 									onChange={handleChange}
 									fullWidth									
-									required
-								/>
-								<TextField
-									label="Descripción"
-									name="description"
-									type="text"
-									value={expense.description}
-									onChange={handleChange}
-									fullWidth
 									required
 								/>
 								<TextField
@@ -141,7 +131,16 @@ const FormDialogAddExpenseManagement = ({ open, onClose, onCreate }) => {
 									onChange={handleChange}
 									fullWidth
 									required
-								/>								
+								/>
+								<TextField
+									label="Descripción"
+									name="description"
+									type="text"
+									value={expense.description}
+									onChange={handleChange}
+									fullWidth
+									required
+								/>																
 							</Box>
 							<Button
 								type="submit"

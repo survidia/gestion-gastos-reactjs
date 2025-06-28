@@ -4,7 +4,7 @@ import { colors } from "../theme/colors";
 const FooterView = () => {
 	return (
 		<Box
-			component="FooterView"
+			component="footer"
 			sx={{
 				position: "fixed", // Se mantiene fijo en la parte inferior
 				bottom: 0,

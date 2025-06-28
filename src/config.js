@@ -7,7 +7,7 @@ export const API_ROUTES = {
 	CREATE_EXPENSE: `${API_APP_URL}/gastos/crear`,
 	UPDATE_EXPENSE: (idExpense) =>
 		`${API_APP_URL}/gastos/actualizar/${idExpense}`,
-	DELETE_ROUTINE: (idExpense) => `${API_APP_URL}/gastos/borrar/${idExpense}`,
+	DELETE_EXPENSE: (idExpense) => `${API_APP_URL}/gastos/eliminar/${idExpense}`,
 };
 
 export default API_ROUTES;
