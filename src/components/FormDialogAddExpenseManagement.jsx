@@ -142,14 +142,6 @@ const FormDialogAddExpenseManagement = ({ open, onClose, onCreate }) => {
 									required
 								/>																
 							</Box>
-							<Button
-								type="submit"
-								variant="contained"
-								color="primary"
-								sx={{ mt: 2 }}
-							>
-								Crear gasto
-							</Button>
 						</form>
 					</DialogContent>
 					<DialogActions>
