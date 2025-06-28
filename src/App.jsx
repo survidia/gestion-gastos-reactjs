@@ -9,7 +9,7 @@ function App() {
 		<>
 			<NavbarView />
 			<Routes>
-				<Route path="/" element={<HomeView />} />
+				<Route path="/api/" element={<HomeView />} />
 			</Routes>
 			<FooterView />
 		</>

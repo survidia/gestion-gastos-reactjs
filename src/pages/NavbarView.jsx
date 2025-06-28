@@ -5,14 +5,14 @@ import { colors } from "../theme/colors";
 const NavbarView = () => {
 	return (
 		<AppBar position="sticky" sx={{ backgroundColor: colors.primary }}>
-			<Toolbar>
-				<Typography variant="h6" sx={{ flexGrow: 1 }}>
-					<Button component={Link} to="/" color="inherit">
+			<Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+				<Typography variant="h6" color="inherit">
+					<Button component={Link} to="/api" sx={{ color: "#fff" }}>
 						Survidia
 					</Button>
 				</Typography>
 				<Box>
-					<Button component={Link} to="/" color="inherit">
+					<Button component={Link} to="/api" sx={{ color: "#fff" }}>
 						Gastos
 					</Button>
 				</Box>

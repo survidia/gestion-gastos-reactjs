@@ -29,6 +29,7 @@ const TableExpenseManagement = () => {
 			const response = await fetch(API_ROUTES.GET_ALL_EXPENSES);
 			if (response.ok) {
 				const data = await response.json();
+				console.log(data)
 				setExpenses(data);
 			} else {
 				console.error("Error al obtener los gastos:", response.statusText);
