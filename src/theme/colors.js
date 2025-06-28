@@ -1,3 +1,4 @@
+// Si se cambia el color aquí se debe buscar masivamente por si se usa en otro sitio
 export const colors = {
 	primary: "#0E1A2B",
 	secondary: "#14253d",
