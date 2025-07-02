@@ -8,6 +8,8 @@ export const colors = {
 	success: "#4caf50",
 	error: "#f44336",
 	info: "#2196f3",
+	// Caja de texto
+	textField: "#254e8a",
 
 	// Color de los botones
 	edit: "#1ae809",

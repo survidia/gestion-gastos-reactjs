@@ -23,8 +23,11 @@ const NavbarView = () => {
 						}}
 					/>
 				<Box>
-					<Button component={Link} to="/api" sx={{ color: "#fff" }}>
+					<Button component={Link} to="/api/inicio" sx={{ color: "#fff" }}>
 						Gastos
+					</Button>
+					<Button component={Link} to="/api/login" sx={{ color: "#fff" }}>
+						Iniciar Sesión
 					</Button>
 				</Box>
 			</Toolbar>

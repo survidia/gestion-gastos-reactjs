@@ -9,10 +9,10 @@ export default defineConfig({
 		port: 3000, // Puerto del servidor
 		open: "/api", // Abre automáticamente en el navegador
 		proxy: {
-			"/gastos": {
+			"/inicio": {
 				target: "http://localhost:8080",
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/gastos/, "/api/gastos"),
+				rewrite: (path) => path.replace(/^\/inicio/, "/api/inicio"),
 			},
 		},
 	},
