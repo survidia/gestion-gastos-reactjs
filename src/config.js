@@ -9,7 +9,7 @@ export const API_ROUTES = {
 		`${API_APP_URL}/inicio/actualizar/${idExpense}`,
 	DELETE_EXPENSE: (idExpense) => `${API_APP_URL}/inicio/eliminar/${idExpense}`,
 
-	LOGIN: `{API_APP_URL}/login`,
+	LOGIN: `${API_APP_URL}/login`,
 };
 
 export default API_ROUTES;
